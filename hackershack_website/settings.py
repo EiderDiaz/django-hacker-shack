@@ -118,3 +118,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# a donde mando al user cuando este autenticado o no
+LOGIN_REDIRECT_URL = "index"
+LOGIN_URL = "login"
+LOGOUT_REDIRECT_URL = "index"

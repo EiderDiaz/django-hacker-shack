@@ -2,7 +2,8 @@ from django import template
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.template import loader
-
+from django.views.generic.base import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def index(request):
     # -> using HTTP response
@@ -25,5 +26,11 @@ def contact(request):
     return render(request=request,
     template_name="contact.html",
     context={})
+
+
+# the order of the inheritance of classes mathers
+# if i switch LoginRequiredMixin, TemplateView to :  TemplateView, LoginRequiredMixin the auth features of LoginRequiredMixin are lost
+class ProfileView(LoginRequiredMixin, TemplateView):
+    template_name = "accounts/profile.html"
 
 

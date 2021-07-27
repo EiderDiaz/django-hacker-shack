@@ -18,4 +18,20 @@
         {% else %} <a href="{{contact_url}}">Contact</a> {% endif %}
          </span>
 
+            <!--User profile menu -->
+         <span style="float:right;">
+             {% if user.is_authenticated %}
+             
+             {% url 'profile' as profile_url %}
+           
+             <span> Hi {% if request.path == profile_url %} {{user.username}} :)
+                {% else %} <a href="{{profile_url}}">{{user.username}} </a> 
+                {%endif%}
+            </span>
+
+            <span> <a href="{% url 'logout' %}">Logout </a> </span>
+             {% else %}
+             <span> <a href="{% url 'login' %}">Login </a> </span>
+             {% endif %}
+         </span>
 </div>
