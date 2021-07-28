@@ -120,6 +120,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # a donde mando al user cuando este autenticado o no
-LOGIN_REDIRECT_URL = "index"
-LOGIN_URL = "login"
-LOGOUT_REDIRECT_URL = "index"
+LOGIN_URL = "accounts:login"
+LOGIN_REDIRECT_URL = "public:index"
+LOGOUT_REDIRECT_URL = "public:index"
