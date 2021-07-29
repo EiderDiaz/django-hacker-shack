@@ -1,0 +1,20 @@
+version: "3.7"
+
+x-service-volumes: &service-volumes
+    - ./:/app/:rw,cached
+
+services:
+    website:
+        image: hackershack-website-tutorial:latest
+        command: python manage.py runserver 0.0.0.0:8000
+        depends_on: 
+            - db_migrate
+        volumes: *service-volumes
+        ports:
+            - "8000:8000"
+
+
+    db_migrate:
+        image: hackershack-website-tutorial:latest
+        command: python manage.py migrate
+        volumes: *service-volumes
