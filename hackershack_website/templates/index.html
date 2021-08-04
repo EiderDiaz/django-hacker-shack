@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
-
+{% load static %}
 
 {% block title %} Home {% endblock %}
 
 
 {% block content %}
-
+<!--"C:\Users\eider\Documents\GitHub\django hacker shack\static\theme\assets\img\avataaars.svg"-->
+<!-- static/theme/assets/img/avataaars.svg-->
+<!-- {% static 'theme/assets/img/avataaars.svg' %} -->
+<img class="masthead-avatar mb-5" src="{% static 'theme/assets/img/avataaars.svg' %}" alt="..." />
 <h1> on index, si señor</h1>
 
 {% endblock %}
