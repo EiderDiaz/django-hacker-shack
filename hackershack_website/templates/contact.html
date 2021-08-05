@@ -31,34 +31,35 @@
 <!-- Contact Section Form-->
 <div class="row">
     <div class=" col-lg-8 mx-auto">
+        {% if success %}
+        <div class="alert alert-success" role="alert">
+            your message was sent! check your inbox for a response.
+          </div>
+        {% endif %}
         <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on 1-->
-        <form id="contactForm" name="sentMessage" novalidate=" novalidate">
-            <div class="control-group">
-                <div class=" form-group floating-label-form-group controls mb-0 pb-2">
-                    <label>Names </Label>
-                    <input class=" form-control" id="name" type="text" placeholder="Name" required=" required" data-validation-required >
-                    <p class="help-black text-danger"> </p>
-                </div>  
-            </div>
+        <form id="contactForm" name="sentMessage" novalidate="novalidate", method="post">
+            {% csrf_token %}
 
-            <div class="control-group">
-                <div class=" form-group floating-label-form-group controls mb-0 pb-2">
-                    <label>Email Address </Label>
-                        <input class=" form-control" id="email" type="email" placeholder="Email Address" required="required" data-validation-required >
-                        <p class="help-black text-danger"> </p>
-                </div>  
-            </div>
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{form.non_field_errors}}
+              </div>
+            {%endif %}
+            {% for field in form %}
+                <div class="control-group">
+                    <div class=" form-group floating-label-form-group controls mb-0 pb-2">
+                        {{ field.label_tag }}
+                        {{ field }}
+                        {% for error in field.errors %}
+                        <p class="help-black text-danger"> {{error}}</p>
+                        {% endfor %}
+                    </div>  
+                </div>
+            {% endfor %}
+          
 
-            <div class="control-group">
-                <div class=" form-group floating-label-form-group controls mb-0 pb-2">
-                    <label>Message </Label>
-                        <input class=" form-control" id="message" rows="5" placeholder="Message" required="required" data-validation-required >
-                        <p class="help-black text-danger"> </p>
-                </div>  
-            </div>
            <br/>     
-            <div id="suecess"></div>
-            <div class="forn-group"> <button class="btn sczen-bg-primary btn-xl text-white" id="sendMessageButton" type="submit"> Send</button>
+            <div class="form-group"> <button class="btn sczen-bg-primary btn-xl text-white" id="sendMessageButton" type="submit"> Send</button>
             </form>
         </div>
     </div>

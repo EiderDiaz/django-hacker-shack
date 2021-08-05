@@ -145,3 +145,12 @@ STATICFILES_DIRS = [ os.path.join(BASE_DIR,"static") ,   ]
 LOGIN_URL = "accounts:login"
 LOGIN_REDIRECT_URL = "public:index"
 LOGOUT_REDIRECT_URL = "public:index"
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+DEFAULT_FROM_EMAIL = "juan@rubisco.mx"
+EMAIL_HOST = "smtp.sendgrid.net" 
+EMAIL_HOST_USER = "apikey"
+EMAIL_HOST_PASSWORD = "<sendgrip_password>"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
