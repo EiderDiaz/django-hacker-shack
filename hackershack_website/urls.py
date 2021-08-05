@@ -26,5 +26,7 @@ urlpatterns = [
     # module path to be included 
     path("", include('hackershack_website.apps.public.urls') ),
     path("accounts/", include('hackershack_website.apps.accounts.urls')),
+    path("contact/", include('hackershack_website.apps.contact.urls')),
+
 
 ]

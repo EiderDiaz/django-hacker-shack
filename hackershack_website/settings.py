@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     #myapps
     'hackershack_website.apps.accounts',
+    'hackershack_website.apps.contact',
+
 ]
 
 MIDDLEWARE = [
